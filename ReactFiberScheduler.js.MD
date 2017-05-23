@@ -2,6 +2,7 @@
 
 ##Table of Contents
 - [scheduleUpdate](#scheduleUpdate)
+- [workLoop](#workLoop)
 
 `let nextPriorityLevel;`
 ## scheduleUpdate<a name="scheduleUpdate"></a>
@@ -57,7 +58,7 @@ performWork(priorityLevel: PriorityLevel, deadline: Deadline | null)
 
 - call `workLoop` - logic extracted to a separate function so that it can be optimized by the JS engine
 
-## workLoop
+## workLoop<a name="workLoop"></a>
 #### what it looks like
 ```
 workLoop(priorityLevel: PriorityLevel, deadline: Deadline | null)
