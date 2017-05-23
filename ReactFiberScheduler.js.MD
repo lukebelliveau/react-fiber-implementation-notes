@@ -1,6 +1,6 @@
 # ReactFiberScheduler.js
 
-##Table of Contents
+## Table of Contents
 - [scheduleUpdate](#ReactFiberScheduler.scheduleUpdate)
 - [performWork](#ReactFiberScheduler.performWork)
 - [workLoop](#ReactFiberScheduler.workLoop)
