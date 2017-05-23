@@ -16,7 +16,9 @@ render(
 )
 ```
 #### what it does
-- Validates the container with [validateContainer]()
+- Validates the container with [`validateContainer`](#validateContainer)
+- Returns the result of [`renderSubtreeIntoContainer`](#renderSubtreeIntoContainer)
+
 <a name="validateContainer"></a>
 ## validateContainer
 #### what it looks like
