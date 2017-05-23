@@ -4,7 +4,7 @@
 - [scheduleUpdate](#scheduleUpdate)
 
 `let nextPriorityLevel;`
-## scheduleUpdate<a name="scheduleUpdate></a>
+## scheduleUpdate<a name="scheduleUpdate"></a>
 #### what it looks like
 ```
 scheduleUpdate(fiber: Fiber, priorityLevel: PriorityLevel)
