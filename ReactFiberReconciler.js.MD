@@ -50,6 +50,8 @@ scheduleTopLevelUpdate(
 ```
 #### what it does
 Determines the priority level of this element's pending update, then schedules the update with the determined priority level.
+
+See `[ReactFiberScheduler.scheduleUpdate()]((ReactFiberScheduler.js.MD#ReactFiberScheduler.scheduleUpdate))`
 ```
 const forceAsync = //TRUE if element is an async wrapper component. This results in LowPriority.
 const priorityLevel = ReactFiberScheduler.getPriorityContext(current, forceAsync)
