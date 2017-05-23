@@ -1,11 +1,11 @@
 # ReactFiberScheduler.js
 
 ## Table of Contents
-- [scheduleUpdate](#ReactFiberScheduler.scheduleUpdate)
-- [performWork](#ReactFiberScheduler.performWork)
-- [workLoop](#ReactFiberScheduler.workLoop)
+- [scheduleUpdate](#scheduleUpdate)
+- [performWork](#performWork)
+- [workLoop](#workLoop)
 
-<a name="ReactFiberScheduler.scheduleUpdate"></a>
+<a name="scheduleUpdate"></a>
 ## scheduleUpdate
 #### what it looks like
 ```
@@ -40,14 +40,14 @@ if (
 - If the node is the root of a host tree:
  - `scheduleRoot(root, priorityLevel);`
  - depending on the `priorityLevel`, either
-   - [`performWork`](#ReactFiberScheduler.performWork) now (for `SynchronousPriority`)
+   - [`performWork`](#performWork) now (for `SynchronousPriority`)
    - schedule a callback to perform work later
 
 - continue climbing up the parent path
 
   `node = node.return;`
   
-<a name="ReactFiberScheduler.performWork"></a>
+<a name="performWork"></a>
 ## performWork
 #### what it looks like
 ```
@@ -58,9 +58,9 @@ performWork(priorityLevel: PriorityLevel, deadline: Deadline | null)
 
   `if(pendingCommit !== null && !deadlineHasExpired) commitAllWork(pendingCommit)`
 
-- call [`workLoop`](#ReactFiberScheduler.workLoop) - logic extracted to a separate function so that it can be optimized by the JS engine
+- call [`workLoop`](#workLoop) - logic extracted to a separate function so that it can be optimized by the JS engine
 
-<a name="ReactFiberScheduler.workLoop"></a>
+<a name="workLoop"></a>
 ## workLoop
 #### what it looks like
 ```

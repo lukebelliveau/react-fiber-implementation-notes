@@ -2,10 +2,22 @@
 `const DOMRenderer = require('ReactFiberReconciler')`
 
 ## Table of Contents
-- [validateContainer](#ReactDOMFiber.validateContainer)
-- [renderSubtreeIntoContainer](#ReactDOMFiber.renderSubtreeIntoContainer)
+- [validateContainer](#validateContainer)
+- [renderSubtreeIntoContainer](#renderSubtreeIntoContainer)
 
-<a name="ReactDOMFiber.validateContainer"></a>
+<a name="render"></a>
+## render
+#### what it looks like
+```
+render(
+    element: ReactElement,
+    container: DOMContainerElement,
+    callback: ?Function,
+)
+```
+#### what it does
+- Validates the container with [validateContainer]()
+<a name="validateContainer"></a>
 ## validateContainer
 #### what it looks like
 ```
@@ -28,7 +40,7 @@ function isValidContainer(node) {
 }
 ```
 
-<a name="ReactDOMFiber.renderSubtreeIntoContainer"></a>
+<a name="renderSubtreeIntoContainer"></a>
 ## renderSubtreeIntoContainer
 #### what it looks like
 ```
@@ -48,7 +60,7 @@ while(container.lastChild) container.removeChild(container.lastChild);
 const newRoot = DOMRenderer.createContainer(container);
 const root = container._reactRootContainer = newRoot
 ```
-- It will then call [DOMRenderer.updateContainer()](ReactFiberReconciler.js.MD#ReactFiberReconciler.updateContainer).
+- It will then call [DOMRenderer.updateContainer()](ReactFiberReconciler.js.MD#updateContainer).
 
   *Note that DOMRenderer = require(ReactFiberReconciler.js)*
 ```

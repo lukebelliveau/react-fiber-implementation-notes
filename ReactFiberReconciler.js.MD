@@ -1,11 +1,11 @@
 # ReactFiberReconciler.js
 
 ## Table of Contents
-- [createContainer](#ReactFiberReconciler.createContainer)
-- [updateContainer](#ReactFiberReconciler.updateContainer)
-- [scheduleTopLevelUpdate](#ReactFiberReconciler.scheduleTopLevelUpdate)
+- [createContainer](#createContainer)
+- [updateContainer](#updateContainer)
+- [scheduleTopLevelUpdate](#scheduleTopLevelUpdate)
 
-<a name="ReactFiberReconciler.createContainer"></a>
+<a name="createContainer"></a>
 ## createContainer
 ```
 function createContainer(containerInfo) {
@@ -13,7 +13,7 @@ function createContainer(containerInfo) {
 }
 ```
 
-<a name="ReactFiberReconciler.updateContainer"></a>
+<a name="updateContainer"></a>
 ## updateContainer
 #### what it looks like
 ```
@@ -25,7 +25,7 @@ updateContainer(
 )
 ```
 #### what it does
-Retrieves context from `parentComponent` and sets `container.context` or `container.pendingContext`. It then calls [`scheduleTopLevelUpdate`](#ReactFiberReconciler.scheduleTopLevelUpdate) to update the container's fiber.
+Retrieves context from `parentComponent` and sets `container.context` or `container.pendingContext`. It then calls [`scheduleTopLevelUpdate`](#scheduleTopLevelUpdate) to update the container's fiber.
 ```
 const context = getContextForSubtree(parentComponent);
 if(container.context === null) {
@@ -38,7 +38,7 @@ const current = container.current;
 scheduleTopLevelUpdate(current, element, callback);
 ```
 
-<a name="ReactFiberReconciler.scheduleTopLevelUpdate"></a>
+<a name="scheduleTopLevelUpdate"></a>
 ## scheduleTopLevelUpdate
 #### what it looks like
 ```
@@ -51,7 +51,7 @@ scheduleTopLevelUpdate(
 #### what it does
 Determines the priority level of this element's pending update, then schedules the update with the determined priority level.
 
-See [`ReactFiberScheduler.scheduleUpdate()`](ReactFiberScheduler.js.MD#ReactFiberScheduler.scheduleUpdate)
+See [`scheduleUpdate()`](ReactFiberScheduler.js.MD#scheduleUpdate)
 ```
 const forceAsync = //TRUE if element is an async wrapper component. This results in LowPriority.
 const priorityLevel = ReactFiberScheduler.getPriorityContext(current, forceAsync)
@@ -59,5 +59,5 @@ const priorityLevel = ReactFiberScheduler.getPriorityContext(current, forceAsync
 const nextState = {element};
 
 ReactFiberUpdateQueue.addTopLevelUpdate(current, nextState, callback, priorityLevel);
-ReactFiberScheduler.scheduleUpdate(current, priorityLevel);
+scheduleUpdate(current, priorityLevel);
 ```
