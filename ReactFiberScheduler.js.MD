@@ -40,3 +40,74 @@ if (
 - continue climbing up the parent path
 
   `node = node.return;`
+
+## performWork
+#### what it looks like
+```
+performWork(priorityLevel: PriorityLevel, deadline: Deadline | null)
+```
+#### what it does
+- check to see if there are pending commits from the previous frame
+
+  `if(pendingCommit !== null && !deadlineHasExpired) commitAllWork(pendingCommit)`
+
+- call `workLoop` - logic extracted to a separate function so that it can be optimized by the JS engine
+
+## workLoop
+#### what it looks like
+```
+workLoop(priorityLevel: PriorityLevel, deadline: Deadline | null)
+```
+
+#### what it does
+- If our unit of work is HostRoot with children, start the hostRootTimeMarker timer:
+```
+if (nextUnitOfWork.tag === HostRoot && nextUnitOfWork.child !== null) {
+    hostRootTimeMarker = 'React update' + componentName;
+    console.time(hostRootTimeMarker)
+  }
+```
+- if we have a deadline, and the priority is not Task work (meaning the priority is not very high), perform work in a loop that checks the deadline on every iteration:
+```
+if(deadline !== null && priorityLevel > TaskPriority) {
+    while(nextUnitOfWork !== null && !deadlineHasExpired) {
+      // ...
+```
+ - If we have time left, call performUnitOfWork.
+ - If we've completed a root, a pendingCommit exists. Otherwise, restart the loop.
+ - If a pendingCommit exists, check to see if we have enough time to commit it. Either commit the work, or mark the deadline as expired.
+
+```
+  if(deadline.timeRemaining() > timeHeuristicForUnitOfWork) {
+    //may result in a pendingCommit
+    nextUnitOfWork = performUnitOfWork(nextUnitOfWork);
+
+    if(pendingCommit !== null) {
+      if(deadline.timeRemaining() > timeHeuristicForUnitOfWork) {
+        commitAllWork(pendingCommit);
+        nextUnitOfWork = findNextUnitOfWork();
+      }
+      else deadlineHasExpired = true;
+    }
+
+  }
+
+  else deadlineHasExpired = true;
+```
+
+- if we do not have a deadline, or if we are performing Task (important) work, use a loop that does not check how much time is remaining. It will keep running until we run out of work at this high priority level (Synchronous and Task priority)
+```
+if(deadline !== null && priorityLevel > TaskPriority) {
+    while(nextUnitOfWork !== null && !deadlineHasExpired) {
+      // ...
+    }
+    // ...
+} else {
+    while(/* there is more work at this priority level*/) {
+      nextUnitOfWork = performUnitOfWork(nextUnitOfWork)
+
+      //if we just committed a root, performUnitOfWork returns null.
+      if(nextUnitOfWork === null) nextUnitOfWork = findNextUnitOfWork()
+    }
+}
+```
