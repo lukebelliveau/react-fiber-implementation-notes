@@ -25,7 +25,7 @@ updateContainer(
 )
 ```
 #### what it does
-Retrieves context from `parentComponent` and sets `container.context` or `container.pendingContext`. It then calls `scheduleTopLevelUpdate` to update the container's fiber.
+Retrieves context from `parentComponent` and sets `container.context` or `container.pendingContext`. It then calls [`scheduleTopLevelUpdate`](#ReactFiberReconciler.scheduleTopLevelUpdate) to update the container's fiber.
 ```
 const context = getContextForSubtree(parentComponent);
 if(container.context === null) {
