@@ -40,7 +40,7 @@ if (
 - If the node is the root of a host tree:
  - `scheduleRoot(root, priorityLevel);`
  - depending on the `priorityLevel`, either
-   - perform work now (for `SynchronousPriority`)
+   - [performWork](#ReactFiberScheduler.performWork) now (for `SynchronousPriority`)
    - schedule a callback to perform work later
 
 - continue climbing up the parent path
