@@ -5,7 +5,6 @@
 - [performWork](#ReactFiberScheduler.performWork)
 - [workLoop](#ReactFiberScheduler.workLoop)
 
-`let nextPriorityLevel;`
 <a name="ReactFiberScheduler.scheduleUpdate"></a>
 ## scheduleUpdate
 #### what it looks like
