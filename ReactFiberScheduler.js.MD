@@ -40,7 +40,7 @@ if (
 - If the node is the root of a host tree:
  - `scheduleRoot(root, priorityLevel);`
  - depending on the `priorityLevel`, either
-   - [performWork](#ReactFiberScheduler.performWork) now (for `SynchronousPriority`)
+   - [`performWork`](#ReactFiberScheduler.performWork) now (for `SynchronousPriority`)
    - schedule a callback to perform work later
 
 - continue climbing up the parent path
@@ -58,7 +58,7 @@ performWork(priorityLevel: PriorityLevel, deadline: Deadline | null)
 
   `if(pendingCommit !== null && !deadlineHasExpired) commitAllWork(pendingCommit)`
 
-- call `workLoop` - logic extracted to a separate function so that it can be optimized by the JS engine
+- call [`workLoop`](#ReactFiberScheduler.workLoop) - logic extracted to a separate function so that it can be optimized by the JS engine
 
 <a name="ReactFiberScheduler.workLoop"></a>
 ## workLoop
