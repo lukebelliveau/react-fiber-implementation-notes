@@ -1,12 +1,12 @@
 # ReactFiberScheduler.js
 
 ##Table of Contents
-- [scheduleUpdate](#scheduleUpdate)
+- [scheduleUpdate](#ReactFiberScheduler.scheduleUpdate)
 - [performWork](#ReactFiberScheduler.performWork)
-- [workLoop](#workLoop)
+- [workLoop](#ReactFiberScheduler.workLoop)
 
 `let nextPriorityLevel;`
-<a name="scheduleUpdate"></a>
+<a name="ReactFiberScheduler.scheduleUpdate"></a>
 ## scheduleUpdate
 #### what it looks like
 ```
@@ -61,7 +61,8 @@ performWork(priorityLevel: PriorityLevel, deadline: Deadline | null)
 
 - call `workLoop` - logic extracted to a separate function so that it can be optimized by the JS engine
 
-## workLoop<a name="workLoop"></a>
+<a name="ReactFiberScheduler.workLoop"></a>
+## workLoop
 #### what it looks like
 ```
 workLoop(priorityLevel: PriorityLevel, deadline: Deadline | null)
