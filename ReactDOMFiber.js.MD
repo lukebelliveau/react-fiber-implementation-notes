@@ -39,8 +39,8 @@ renderSubtreeIntoContainer(
 //clear existing content inside container
 while(container.lastChild) container.removeChild(container.lastChild);
 //create new root and attach to DOMContainer
-newRoot = DOMRenderer.createContainer(container);
-root = container._reactRootContainer = newRoot
+const newRoot = DOMRenderer.createContainer(container);
+const root = container._reactRootContainer = newRoot
 ```
 - It will then call DOMRenderer.updateContainer().
 
