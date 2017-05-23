@@ -1,9 +1,10 @@
 # ReactFiberScheduler.js
 
 ##Table of Contents
-- [scheduleUpdate](#ReactFiberScheduler.scheduleUpdate)
+- [scheduleUpdate](#scheduleUpdate)
+
 `let nextPriorityLevel;`
-## scheduleUpdate<a name="ReactFiberScheduler.scheduleUpdate></a>
+## scheduleUpdate<a name="scheduleUpdate></a>
 #### what it looks like
 ```
 scheduleUpdate(fiber: Fiber, priorityLevel: PriorityLevel)
