@@ -48,7 +48,7 @@ while(container.lastChild) container.removeChild(container.lastChild);
 const newRoot = DOMRenderer.createContainer(container);
 const root = container._reactRootContainer = newRoot
 ```
-- It will then call [DOMRenderer.updateContainer()](ReactFiberReconciler.js.MD).
+- It will then call [DOMRenderer.updateContainer()](ReactFiberReconciler.js.MD#ReactFiberReconciler.updateContainer).
 
   *Note that DOMRenderer = require(ReactFiberReconciler.js)*
 ```
