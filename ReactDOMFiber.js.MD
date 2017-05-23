@@ -68,4 +68,4 @@ const root = container._reactRootContainer = newRoot
 ```
 DOMRenderer.updateContainer(children, root, parentComponent, callback);
 ```
-- Finally, we return [DOMRenderer](#ReactFiberReconciler.js.MD).getPublicRootInstance(root)
+- Finally, we return [DOMRenderer](ReactFiberReconciler.js.MD).getPublicRootInstance(root)
