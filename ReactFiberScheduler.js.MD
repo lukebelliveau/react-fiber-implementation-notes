@@ -5,7 +5,8 @@
 - [workLoop](#workLoop)
 
 `let nextPriorityLevel;`
-## scheduleUpdate<a name="scheduleUpdate"></a>
+<a name="scheduleUpdate"></a>
+## scheduleUpdate
 #### what it looks like
 ```
 scheduleUpdate(fiber: Fiber, priorityLevel: PriorityLevel)
