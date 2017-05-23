@@ -1,6 +1,11 @@
 # ReactDOMFiber.js
 `const DOMRenderer = require('ReactFiberReconciler')`
 
+## Table of Contents
+- [validateContainer](#ReactDOMFiber.validateContainer)
+- [renderSubtreeIntoContainer](#ReactDOMFiber.renderSubtreeIntoContainer)
+
+<a name="ReactDOMFiber.validateContainer"></a>
 ## validateContainer
 #### what it looks like
 ```
@@ -23,6 +28,7 @@ function isValidContainer(node) {
 }
 ```
 
+<a name="ReactDOMFiber.renderSubtreeIntoContainer"></a>
 ## renderSubtreeIntoContainer
 #### what it looks like
 ```
