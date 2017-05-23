@@ -2,6 +2,7 @@
 
 ##Table of Contents
 - [scheduleUpdate](#scheduleUpdate)
+- [performWork](#ReactFiberScheduler.performWork)
 - [workLoop](#workLoop)
 
 `let nextPriorityLevel;`
@@ -46,7 +47,8 @@ if (
 - continue climbing up the parent path
 
   `node = node.return;`
-
+  
+<a name="ReactFiberScheduler.performWork"></a>
 ## performWork
 #### what it looks like
 ```
