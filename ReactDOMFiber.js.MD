@@ -45,7 +45,7 @@ renderSubtreeIntoContainer(
 //clear existing content inside container
 while(container.lastChild) container.removeChild(container.lastChild);
 //create new root and attach to DOMContainer
-const newRoot = `DOMRenderer.[createContainer(container)](ReactFiberReconciler.js.MD#ReactFiberReconciler.updateContainer);`
+const newRoot = DOMRenderer.createContainer(container);
 const root = container._reactRootContainer = newRoot
 ```
 - It will then call [DOMRenderer.updateContainer()](ReactFiberReconciler.js.MD#ReactFiberReconciler.updateContainer).
