@@ -1,5 +1,11 @@
 # ReactFiberReconciler.js
 
+## Table of Contents
+- [createContainer](#ReactFiberReconciler.createContainer)
+- [updateContainer](#ReactFiberReconciler.updateContainer)
+- [scheduleTopLevelUpdate](#ReactFiberReconciler.scheduleTopLevelUpdate)
+
+<a name="ReactFiberReconciler.createContainer"></a>
 ## createContainer
 ```
 function createContainer(containerInfo) {
@@ -7,6 +13,7 @@ function createContainer(containerInfo) {
 }
 ```
 
+<a name="ReactFiberReconciler.updateContainer"></a>
 ## updateContainer
 #### what it looks like
 ```
@@ -31,6 +38,7 @@ const current = container.current;
 scheduleTopLevelUpdate(current, element, callback);
 ```
 
+<a name="ReactFiberReconciler.scheduleTopLevelUpdate"></a>
 ## scheduleTopLevelUpdate
 #### what it looks like
 ```
