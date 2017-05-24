@@ -49,10 +49,10 @@ class App extends Component {
 ReactDOM.render(<App />, document.getElementById('root'))
 ```
 The app flows like so:
-- call [ReactDOM.render()](#ReactDOM.render), which calls
-- [ReactDOM.renderSubtreeIntoContainer()](#ReactDOM.renderSubtreeIntoContainer(<App />))
+- call [ReactDOM.render()](#ReactDOM.render(App)), which calls
+- [ReactDOM.renderSubtreeIntoContainer()](#ReactDOM.renderSubtreeIntoContainer(App))
 
-<a name="ReactDOM.render"></a>
+<a name="ReactDOM.render(App)"></a>
 ## ReactDOM.render(\<App />, \<div id="root">...\</div>)
 #### Arguments
 - element:
@@ -77,7 +77,7 @@ undefined
 renderSubtreeIntoContainer(null, element, container, callback);
 ```
 
-<a name="ReactDOM.renderSubtreeIntoContainer(<App />)"></a>
+<a name="ReactDOM.renderSubtreeIntoContainer(App)"></a>
 ## ReactDOM.renderSubtreeIntoContainer(null, element, container, callback)
 #### Arguments
 - parentComponent:
