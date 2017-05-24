@@ -158,7 +158,6 @@ if (!root) {
 - container:
 ```es6
 {
- containerInfo: div#root,
  context: null,
  pendingContext: null,
  current: [object Object],
@@ -179,11 +178,3 @@ else container.pendingContext = context;
 
 scheduleTopLevelUpdate(container.current, element);
 ```
-## Key Terms
-
-### `alternate`
-from [acdlite's React Fiber Architecture](https://github.com/acdlite/react-fiber-architecture#alternate):
-
-> At any time, a component instance has at most two fibers that correspond to it: the current, flushed fiber, and the work-in-progress fiber.
-
-> The alternate of the current fiber is the work-in-progress, and the alternate of the work-in-progress is the current fiber.
