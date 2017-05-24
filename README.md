@@ -59,7 +59,7 @@ ReactDOM.render(<App />, document.getElementById('root'))
 ```
 - container: 
 ```es6
-<div id="root'>...</div>
+<div id="root">...</div>
 ```
 
 - callback: 
