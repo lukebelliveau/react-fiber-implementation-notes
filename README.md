@@ -12,7 +12,7 @@ ReactDOMFiber can be found at `react/src/renderers/dom/fiber`.
 
 # Sample Step-Through
 With the following app code:
-```$xslt
+```
 const TextBox = ({ onChange }) => (
   <input onChange={ onChange }></input>
 );
@@ -68,7 +68,7 @@ undefined
 ```
 
 #### Execution
-```$xslt
+```
 renderSubtreeIntoContainer(null, element, container, callback);
 ```
 
@@ -79,7 +79,7 @@ renderSubtreeIntoContainer(null, element, container, callback);
 null
 ```
 - children: 
-```$xslt
+```
 //this is the element retruned from <App />'s render().
 {
  type: function App(),
@@ -87,11 +87,11 @@ null
 }
 ```
 - containerNode:
-```$xslt
+```
 <div id="root"></div>
 ```
 - callback: 
-```$xslt
+```
 undefined
 ```
 
@@ -101,7 +101,7 @@ This is a safety check - if `containerNode` is a `DOCUMENT_NODE`, we get the [ro
 
 Our container, `<div id="root" />` is an `ELEMENT_NODE`, so we just assign `container = containerNode`.
 
-```$xslt
+```
 let container: DOMContainerElement = containerNode.nodeType === DOCUMENT_NODE
     ? (containerNode: any).documentElement
     : (containerNode: any);
@@ -115,7 +115,7 @@ In the block, we prepare our `root` for mounting in two steps:
 Then, call `DOMRenderer.updateContainer()` with our `root`. Note that we do *not* batch the update if this is our initial mount, indicated by a nonexistent `container._reactRootContainer`.
 
 This `DOMRenderer.updateContainer()` call will reconcile and mount the whole tree (!!!)
-```$xslt
+```
 let root = container._reactRootContainer;
 
 if (!root) {
