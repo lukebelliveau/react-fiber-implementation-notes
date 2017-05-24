@@ -51,35 +51,35 @@ ReactDOM.render(<App />, document.getElementById('root'))
 ## ReactDOM.render(\<App />, \<div id="root">...\</div>)
 #### Arguments
 - element:
-```
+```es6
 {
     type: function App()
     //...
 }
 ```
 - container: 
-```
+```es6
 <div id="root'>...</div>
 ```
 
 - callback: 
-```
+```es6
 undefined
 ```
 
 #### Execution
-```
+```es6
 renderSubtreeIntoContainer(null, element, container, callback);
 ```
 
 ## renderSubtreeIntoContainer(null, element, container, callback)
 #### Arguments
 - parentComponent:
-```
+```es6
 null
 ```
 - children: 
-```
+```es6
 //this is the element retruned from <App />'s render().
 {
  type: function App(),
@@ -87,11 +87,11 @@ null
 }
 ```
 - containerNode:
-```
+```es6
 <div id="root"></div>
 ```
 - callback: 
-```
+```es6
 undefined
 ```
 
@@ -101,7 +101,7 @@ This is a safety check - if `containerNode` is a `DOCUMENT_NODE`, we get the [ro
 
 Our container, `<div id="root" />` is an `ELEMENT_NODE`, so we just assign `container = containerNode`.
 
-```
+```es6
 let container: DOMContainerElement = containerNode.nodeType === DOCUMENT_NODE
     ? (containerNode: any).documentElement
     : (containerNode: any);
