@@ -48,11 +48,11 @@ class App extends Component {
 
 ReactDOM.render(<App />, document.getElementById('root'))
 ```
-The app flows like so:
-- call [ReactDOM.render()](#ReactDOM.render(App)), which calls
-- [ReactDOM.renderSubtreeIntoContainer()](#ReactDOM.renderSubtreeIntoContainer(App)), which calls
-- [ReactFiberReconciler.updateContainer(children, newRoot, parentComponent, callback)](#ReactFiberReconciler.updateContainer(App)). 
-  - This begins the traversal by calling `scheduleTopLevelUpdate()`.
+Trace the initial mounting of the app:
+- call [`ReactDOM.render()`](#ReactDOM.render(App)), which calls
+- [`ReactDOM.renderSubtreeIntoContainer()`](#ReactDOM.renderSubtreeIntoContainer(App)), which calls
+- [`ReactFiberReconciler.updateContainer()`](#ReactFiberReconciler.updateContainer(App)). 
+  - This begins the traversal by calling [`scheduleTopLevelUpdate()`](#ReactFiberReconciler.scheduleTopLevelUpdate(App)).
 
 <a name="ReactDOM.render(App)"></a>
 ## ReactDOM.render(\<App />, \<div id="root">...\</div>)
@@ -170,11 +170,41 @@ if (!root) {
 - assign `context` to `container.context`.
 - call `scheduleTopLevelUpdate(current, element)`
 ```es6
-const context = getContextForSubtree
+//parentComponent is null here. getContextForSubtree() returns an empty object.
+const context = getContextForSubtree(parentComponent)
 
 //container.context === null
 if(container.context === null) container.context = context;
 else container.pendingContext = context;
 
+//container.current is the container's current Fiber.
 scheduleTopLevelUpdate(container.current, element);
+```
+
+<a name="ReactFiberReconciler.scheduleTopLevelUpdate(App)"></a>
+## ReactFiberReconciler.scheduleTopLevelUpdate() for \<App />
+#### Arguments
+- current
+```es6
+//an object that is passed along - we do not use any of its properties here.
+{
+ //...
+}
+```
+- element
+```es6
+//this is the element retruned from <App />'s render().
+{
+ type: function App(),
+ //...
+}
+```
+- `scheduleTopLevelUpdate()` also accepts a `callback` argument, but it is null here.
+#### Execution
+```es6
+const priorityLevel = getPriorityContext(current);
+const nextState = { element };
+
+addTopLevelUpdate(current, nextState, callback, priorityLevel);
+scheduleUpdate(current, priorityLevel);
 ```
