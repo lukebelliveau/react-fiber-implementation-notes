@@ -50,22 +50,91 @@ ReactDOM.render(<App />, document.getElementById('root'))
 ```
 ### ReactDOM.render(\<App />, \<div id="root">...\</div>)
 #### Arguments
-```$xslt
-element: {
+- element:
+```
+{
     type: function App()
     //...
 }
-container: <div id="root'>...</div>
-callback: undefined
 ```
-#### Actions
+- container: 
+```
+<div id="root'>...</div>
+```
+
+- callback: 
+```
+undefined
+```
+
+#### Execution
 ```$xslt
 renderSubtreeIntoContainer(null, element, container, callback);
 ```
 
 ### renderSubtreeIntoContainer(null, element, container, callback)
+#### Arguments
+- parentComponent:
+```
+null
+```
+- children: 
+```$xslt
+//this is the element retruned from <App />'s render().
+{
+ type: function App(),
+ //...
+}
+```
+- containerNode:
+```$xslt
+<div id="root"></div>
+```
+- callback: 
+```$xslt
+undefined
+```
 
+#### Execution
+First, set `container: DOMContainerElement` based on `containerNode.nodeType`.  
+This is a safety check - if `containerNode` is a `DOCUMENT_NODE`, we get the [root element of the document](https://developer.mozilla.org/en-US/docs/Web/API/Document/documentElement).
 
+Our container, `<div id="root" />` is an `ELEMENT_NODE`, so we just assign `container = containerNode`.
+
+```$xslt
+let container: DOMContainerElement = containerNode.nodeType === DOCUMENT_NODE
+    ? (containerNode: any).documentElement
+    : (containerNode: any);
+```
+Then set `root` equal to `container._reactRootContainer`. In our case, `root === undefined`, so we enter the following conditional block. 
+
+In the block, we prepare our `root` for mounting in two steps:
+1. clear existing content from the container.
+2. Create a container with `DOMRenderer.createContainer(container)`
+
+Then, call `DOMRenderer.updateContainer()` with our `root`. Note that we do *not* batch the update if this is our initial mount, indicated by a nonexistent `container._reactRootContainer`.
+
+This `DOMRenderer.updateContainer()` call will reconcile and mount the whole tree (!!!)
+```$xslt
+let root = container._reactRootContainer;
+
+if (!root) {
+    // First clear any existing content.
+    while (container.lastChild) {
+      container.removeChild(container.lastChild);
+    }
+    
+    const newRoot = DOMRenderer.createContainer(container);
+    root = container._reactRootContainer = newRoot;
+    
+    // Initial mount should not be batched.
+    DOMRenderer.unbatchedUpdates(() => {
+      DOMRenderer.updateContainer(children, newRoot, parentComponent, callback);
+    });
+} else {
+    DOMRenderer.updateContainer(children, root, parentComponent, callback);
+}
+```
 
 ## Key Terms
 
