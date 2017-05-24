@@ -53,6 +53,8 @@ Trace the initial mounting of the app:
 - [`ReactDOM.renderSubtreeIntoContainer()`](#ReactDOM.renderSubtreeIntoContainer(App)), which calls
 - [`ReactFiberReconciler.updateContainer()`](#ReactFiberReconciler.updateContainer(App)). 
   - This begins the traversal by calling [`scheduleTopLevelUpdate()`](#ReactFiberReconciler.scheduleTopLevelUpdate(App)).
+- [`scheduleTopLevelUpdate()`](#ReactFiberReconciler.scheduleTopLevelUpdate(App)) kicks off the excitement with the following calls:
+  - [`addTopLevelUpdate()`](#ReactFiberUpdateQueue.addTopLevelUpdate(App))
 
 <a name="ReactDOM.render(App)"></a>
 ## ReactDOM.render(\<App />, \<div id="root">...\</div>)
@@ -201,6 +203,10 @@ scheduleTopLevelUpdate(container.current, element);
 ```
 - `scheduleTopLevelUpdate()` also accepts a `callback` argument, but it is null here.
 #### Execution
+- Retrieve the fiber's priority level for scheduling.
+  - In the real source, this also checks if the element is an async wrapper component. If so, it will return `LowPriority`.
+- Call `ReactFiberUpdateQueue.addTopLevelUpdate()`
+- Call `ReactFiberScheduler.scheduleUpdate()`
 ```es6
 const priorityLevel = getPriorityContext(current);
 const nextState = { element };
@@ -208,3 +214,9 @@ const nextState = { element };
 addTopLevelUpdate(current, nextState, callback, priorityLevel);
 scheduleUpdate(current, priorityLevel);
 ```
+
+
+<a name="ReactFiberUpdateQueue.addTopLevelUpdate(App)"></a>
+## ReactFiberUpdateQueue.addTopLevelUpdate() for \<App />
+#### Arguments
+#### Execution
