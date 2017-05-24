@@ -10,6 +10,63 @@ The Fiber source code can be found at `react/src/renderers/shared/fiber`.
 
 ReactDOMFiber can be found at `react/src/renderers/dom/fiber`.
 
+## Sample Step-Through
+With the following app code:
+```$xslt
+const TextBox = ({ onChange }) => (
+  <input onChange={ onChange }></input>
+);
+
+const Display = ({ text }) => (
+  <div>{ text }</div>
+)
+
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      text: 'type',
+    };
+  };
+
+  changeText = (event) => {
+    const value = event.target.value;
+    this.setState((state, props) => ({
+      text: value
+    }));
+  };
+
+  render() {
+    return (
+      <div>
+        <Display text={ this.state.text }/>
+        <TextBox onChange = { this.changeText } />
+      </div>
+    )
+  }
+}
+
+ReactDOM.render(<App />, document.getElementById('root'))
+```
+### ReactDOM.render(\<App />, \<div id="root">...\</div>)
+#### Arguments
+```$xslt
+element: {
+    type: function App()
+    //...
+}
+container: <div id="root'>...</div>
+callback: undefined
+```
+#### Actions
+```$xslt
+renderSubtreeIntoContainer(null, element, container, callback);
+```
+
+### renderSubtreeIntoContainer(null, element, container, callback)
+
+
+
 ## Key Terms
 
 ### `alternate`

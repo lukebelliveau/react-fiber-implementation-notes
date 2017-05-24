@@ -15,9 +15,8 @@ render(
     callback: ?Function,
 )
 ```
-#### what it does
-- Validates the container with [`validateContainer`](#validateContainer)
-- Returns the result of [`renderSubtreeIntoContainer`](#renderSubtreeIntoContainer)
+- Validates the container with [`validateContainer()`](#validateContainer)
+- Calls [`renderSubtreeIntoContainer()`](#renderSubtreeIntoContainer)
 
 <a name="validateContainer"></a>
 ## validateContainer
