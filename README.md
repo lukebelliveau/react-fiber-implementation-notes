@@ -50,7 +50,9 @@ ReactDOM.render(<App />, document.getElementById('root'))
 ```
 The app flows like so:
 - call [ReactDOM.render()](#ReactDOM.render(App)), which calls
-- [ReactDOM.renderSubtreeIntoContainer()](#ReactDOM.renderSubtreeIntoContainer(App))
+- [ReactDOM.renderSubtreeIntoContainer()](#ReactDOM.renderSubtreeIntoContainer(App)), which calls
+- [ReactFiberReconciler.updateContainer(children, newRoot, parentComponent, callback)](#ReactFiberReconciler.updateContainer(App)). 
+  - This begins the traversal by calling `scheduleTopLevelUpdate()`.
 
 <a name="ReactDOM.render(App)"></a>
 ## ReactDOM.render(\<App />, \<div id="root">...\</div>)
@@ -142,6 +144,41 @@ if (!root) {
 }
 ```
 
+<a name="ReactFiberReconciler.updateContainer(App)"></a>
+## ReactFiberReconciler.updateContainer(children, root)
+#### Arguments
+- element:
+```es6
+//this is the element retruned from <App />'s render().
+{
+ type: function App(),
+ //...
+}
+```
+- container:
+```es6
+{
+ containerInfo: div#root,
+ context: null,
+ pendingContext: null,
+ current: [object Object],
+ //...
+}
+```
+- updateContainer() also accepts `parentComponent` and `callback` arguments, but they are both `null` here.
+#### Execution
+- call `getContextForSubtree(parentComponent)`. In this case, it returns an empty object. 
+- assign `context` to `container.context`.
+- call `scheduleTopLevelUpdate(current, element)`
+```es6
+const context = getContextForSubtree
+
+//container.context === null
+if(container.context === null) container.context = context;
+else container.pendingContext = context;
+
+scheduleTopLevelUpdate(container.current, element);
+```
 ## Key Terms
 
 ### `alternate`
