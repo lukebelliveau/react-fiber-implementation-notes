@@ -49,10 +49,10 @@ class App extends Component {
 ReactDOM.render(<App />, document.getElementById('root'))
 ```
 The app flows like so:
-- call [ReactDOM.render()](#ReactDOM.render(<App />)), which calls
+- call [ReactDOM.render()](#ReactDOM.render), which calls
 - [ReactDOM.renderSubtreeIntoContainer()](#ReactDOM.renderSubtreeIntoContainer(<App />))
 
-<a name="ReactDOM.render(<App />)"></a>
+<a name="ReactDOM.render"></a>
 ## ReactDOM.render(\<App />, \<div id="root">...\</div>)
 #### Arguments
 - element:
