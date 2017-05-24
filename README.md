@@ -10,7 +10,7 @@ The Fiber source code can be found at `react/src/renderers/shared/fiber`.
 
 ReactDOMFiber can be found at `react/src/renderers/dom/fiber`.
 
-## Sample Step-Through
+# Sample Step-Through
 With the following app code:
 ```$xslt
 const TextBox = ({ onChange }) => (
@@ -48,7 +48,7 @@ class App extends Component {
 
 ReactDOM.render(<App />, document.getElementById('root'))
 ```
-### ReactDOM.render(\<App />, \<div id="root">...\</div>)
+## ReactDOM.render(\<App />, \<div id="root">...\</div>)
 #### Arguments
 - element:
 ```
@@ -72,7 +72,7 @@ undefined
 renderSubtreeIntoContainer(null, element, container, callback);
 ```
 
-### renderSubtreeIntoContainer(null, element, container, callback)
+## renderSubtreeIntoContainer(null, element, container, callback)
 #### Arguments
 - parentComponent:
 ```
