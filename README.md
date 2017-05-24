@@ -12,7 +12,7 @@ ReactDOMFiber can be found at `react/src/renderers/dom/fiber`.
 
 # Sample Step-Through
 With the following app code:
-```
+```es6
 const TextBox = ({ onChange }) => (
   <input onChange={ onChange }></input>
 );
@@ -115,7 +115,7 @@ In the block, we prepare our `root` for mounting in two steps:
 Then, call `DOMRenderer.updateContainer()` with our `root`. Note that we do *not* batch the update if this is our initial mount, indicated by a nonexistent `container._reactRootContainer`.
 
 This `DOMRenderer.updateContainer()` call will reconcile and mount the whole tree (!!!)
-```
+```es6
 let root = container._reactRootContainer;
 
 if (!root) {
