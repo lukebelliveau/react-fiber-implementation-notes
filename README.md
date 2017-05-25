@@ -53,8 +53,11 @@ Trace the initial mounting of the app:
 - [`ReactDOM.renderSubtreeIntoContainer()`](#ReactDOM.renderSubtreeIntoContainer(App)), which calls
 - [`ReactFiberReconciler.updateContainer()`](#ReactFiberReconciler.updateContainer(App)). 
   - This begins the traversal by calling [`scheduleTopLevelUpdate()`](#ReactFiberReconciler.scheduleTopLevelUpdate(App)).
+  
+  
 - [`scheduleTopLevelUpdate()`](#ReactFiberReconciler.scheduleTopLevelUpdate(App)) kicks off the excitement with the following calls:
-  - [`addTopLevelUpdate()`](#ReactFiberUpdateQueue.addTopLevelUpdate(App))
+  - [`ReactFiberUpdateQueue.addTopLevelUpdate()`](#ReactFiberUpdateQueue.addTopLevelUpdate(App))
+    - [`insertUpdate()`](#ReactFiberUpdateQueue.insertUpdate(App))
 
 <a name="ReactDOM.render(App)"></a>
 ## ReactDOM.render(\<App />, \<div id="root">...\</div>)
@@ -253,3 +256,9 @@ const update = {
   
   insertUpdate(fiber, update);
 ```
+
+
+<a name="ReactFiberUpdateQueue.insertUpdate(App)"></a>
+## ReactFiberUpdateQueue.insertUpdate() for \<App />
+#### Arguments
+#### Execution
