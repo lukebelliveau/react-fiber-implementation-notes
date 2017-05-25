@@ -166,7 +166,7 @@ if (!root) {
  //...
 }
 ```
-- updateContainer() also accepts `parentComponent` and `callback` arguments, but they are both `null` here.
+- *updateContainer() also accepts `parentComponent` and `callback` arguments, but they are both `null` here.*
 #### Execution
 - call `getContextForSubtree(parentComponent)`. In this case, it returns an empty object. 
 - assign `context` to `container.context`.
@@ -188,7 +188,7 @@ scheduleTopLevelUpdate(container.current, element);
 #### Arguments
 - current
 ```es6
-//an object that is passed along - we do not use any of its properties here.
+//<App />'s fiber. This is passed to the next call - we do not use any of its properties here.
 {
  //...
 }
@@ -201,7 +201,7 @@ scheduleTopLevelUpdate(container.current, element);
  //...
 }
 ```
-- `scheduleTopLevelUpdate()` also accepts a `callback` argument, but it is null here.
+- *`scheduleTopLevelUpdate()` also accepts a `callback` argument, but it is null here.*
 #### Execution
 - Retrieve the fiber's priority level for scheduling.
   - In the real source, this also checks if the element is an async wrapper component. If so, it will return `LowPriority`.
@@ -219,4 +219,37 @@ scheduleUpdate(current, priorityLevel);
 <a name="ReactFiberUpdateQueue.addTopLevelUpdate(App)"></a>
 ## ReactFiberUpdateQueue.addTopLevelUpdate() for \<App />
 #### Arguments
+- fiber
+```es6
+
+```
+- partialState
+```es6
+{
+ //this is the element retruned from <App />'s render().
+ element: {
+  type: function App(),
+  //...
+ }
+}
+```
+- priorityLevel
+```es6
+1
+```
+- *`addTopLevelUpdate()` also accepts a `callback` argument, but it is `null` here.*
 #### Execution
+- Generate an `update` object and call `insertUpdate`:
+```es6
+const update = {
+    priorityLevel,
+    partialState,
+    callback,
+    isReplace: false,
+    isForced: false,
+    isTopLevelUnmount,
+    next: null,
+  };
+  
+  insertUpdate(fiber, update);
+```
