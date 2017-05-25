@@ -2,6 +2,8 @@
 
 I've been trying to wrap my head around Fiber's source code, so I figured I'd share my notes. Will hopefully organize this better once I get a better idea of how everything fits together.
 
+To do this, I'm working with a really simple sample app (shown below) and tracing through Fiber. I've marked up [React's source](https://github.com/lukebelliveau/react/tree/markedup) to help with this. I'm sure there's a better way to do this and I'd love suggestions.
+
 To follow along, clone React:
 
 `git clone https://github.com/facebook/react.git`
